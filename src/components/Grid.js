@@ -1,6 +1,5 @@
-import React from 'react';
-import Cell from './Cell';
-
+import React from "react";
+import Cell from "./Cell";
 
 /**
  * The Grid component represents the interface for displaying clickable
@@ -8,11 +7,29 @@ import Cell from './Cell';
  * activeColor when a user clicks on it.
  */
 const Grid = (props) => {
+  const { activeColor, cellList, setCellList } = props;
+
+  return (
+    <div className="grid">
+      {cellList.map((cell, i) => {
+        return (
+          <Cell
+            key={`${i} grid-`}
+            color={cell.color}
+            handleClick={() => {
+              const copyList = [...cellList];
+              copyList[i].color = activeColor;
+              setCellList(copyList);
+            }}
+          />
+        );
+      })}
+    </div>
+  );
   /**
    * Create constants for activeColor, cellList, and setCellList, reading the value off of the props
    */
 
-  
   /**
    * For the template you need to:
    * - map over the cellList
@@ -24,7 +41,6 @@ const Grid = (props) => {
    *        - updates the color of the clicked cell to the activeColor (the index from the map function is useful here)
    *        - calls setCellList, passing in the updated copy
    */
-  return <div className="grid"></div>
-}
+};
 
 export default Grid;
