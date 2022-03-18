@@ -35,11 +35,11 @@ const ActionPanel = (props) => {
     */}
       <button
         onClick={() => {
-          setCellList(buildCellList());
-          cellList.forEach((cell) => {
-            cell.color = activeColor;
-            setCellList(cellList);
+          let newList = buildCellList();
+          newList.forEach((cell) => {
+          cell.color = activeColor;
           });
+          setCellList(newList);
         }}
       >
         fill all
